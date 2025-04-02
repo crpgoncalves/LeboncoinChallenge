@@ -11,7 +11,7 @@ import SwiftUI
 struct LebocoinChallengeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ListScreenView()
         }
     }
 }
