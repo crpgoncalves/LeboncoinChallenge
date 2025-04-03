@@ -21,7 +21,7 @@ import Foundation
     "is_urgent":false
  }
  */
-struct ADModel: Codable {
+struct ADModel: Codable, Identifiable {
     let id: Int
     let categoryId: Int
     let title: String

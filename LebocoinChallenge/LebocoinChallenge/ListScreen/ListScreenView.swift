@@ -10,18 +10,24 @@ import SwiftUI
 struct ListScreenView: View {
     
     @StateObject private var vm = ListScreenViewModel()
+
+    var columns: [GridItem] {
+        return Array(repeating: GridItem(.flexible()),
+                     count: 1)
+    }
     
     var body: some View {
-        VStack {
-            Text("\(vm.ads.count)")
-            ForEach(vm.categories) {
-                Text($0.name)
+        ScrollView {
+            LazyVGrid(columns: columns) {
+                ForEach(vm.ads) { ad in
+                    ADItemView(ad: ad)
+                }
             }
+            .padding()
         }
         .onAppear {
             vm.fetchCategories()
         }
-        .padding()
     }
 }
 

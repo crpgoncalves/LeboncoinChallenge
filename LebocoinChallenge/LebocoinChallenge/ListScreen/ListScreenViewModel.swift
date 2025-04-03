@@ -9,6 +9,7 @@ import Combine
 import SwiftUI
 
 class ListScreenViewModel: ObservableObject {
+    
     @Published var categories = [ADCategory]()
     @Published var ads = [ADModel]()
 
@@ -24,7 +25,7 @@ class ListScreenViewModel: ObservableObject {
     
     func fetchCategories() {
         getCategoryService.getCategories()
-            .sink(receiveCompletion: { [weak self] completion in
+            .sink(receiveCompletion: { completion in
                 if case .failure(let error) = completion {
                     print(error.localizedDescription)
                 }
@@ -34,7 +35,7 @@ class ListScreenViewModel: ObservableObject {
             .store(in: &cancellables)
         
         getAdsService.getAds()
-            .sink(receiveCompletion: { [weak self] completion in
+            .sink(receiveCompletion: { completion in
                 if case .failure(let error) = completion {
                     print(error.localizedDescription)
                 }
