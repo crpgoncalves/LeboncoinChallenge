@@ -1,6 +1,6 @@
 # LebocoinChallenge
 
-### How to configure LebocoinChallenge
+### How to configure LeboncoinChallenge
 
 1. Go to `Product` > `Scheme` > `Edit Scheme`
 2. Go to `Run`
