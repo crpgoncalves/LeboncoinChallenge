@@ -1,6 +1,6 @@
 //
 //  NetworkClientTests.swift
-//  LebocoinChallenge
+//  LeboncoinChallenge
 //
 //  Created by Carlos Gonçalves on 02/04/2025.
 //
@@ -8,7 +8,7 @@
 import Combine
 import XCTest
 
-@testable import LebocoinChallenge
+@testable import LeboncoinChallenge
 
 class NetworkClientTests: XCTestCase {
     

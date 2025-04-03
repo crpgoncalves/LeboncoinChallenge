@@ -120,19 +120,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lebocoin Challenge"
+            "value" : "Leboncoin Challenge"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lebocoin Challenge"
+            "state" : "needs_review",
+            "value" : "Leboncoin Challenge"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lebocoin Challenge"
+            "value" : "Leboncoin Challenge"
           }
         }
       }

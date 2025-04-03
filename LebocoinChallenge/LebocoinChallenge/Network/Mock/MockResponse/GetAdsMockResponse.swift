@@ -1,6 +1,6 @@
 //
 //  GetAdsMockResponse.swift
-//  LebocoinChallenge
+//  LeboncoinChallenge
 //
 //  Created by Carlos Gonçalves on 03/04/2025.
 //
