@@ -34,7 +34,7 @@ struct ADItemView: View {
                     .cornerRadius(10)
             }
             
-            Text("Category: \(ad.categoryId)")
+            Text("list_screen.category: \(ad.categoryId)")
                 .font(.subheadline)
                 .foregroundColor(.gray)
             
@@ -48,7 +48,7 @@ struct ADItemView: View {
                 .foregroundColor(.green)
             
             if ad.isUrgent {
-                Text("Urgent")
+                Text("list_screen.urgent")
                     .font(.subheadline)
                     .foregroundColor(.red)
                     .padding(5)
