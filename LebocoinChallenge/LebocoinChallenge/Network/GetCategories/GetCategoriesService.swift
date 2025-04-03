@@ -9,7 +9,7 @@ import Combine
 
 protocol GetCategoriesServiceProtocol {
     var networkClient: NetworkRequestable { get }
-    func getCategories() -> AnyPublisher<[LCCategory], Error>
+    func getCategories() -> AnyPublisher<[ADCategory], Error>
 }
 
 class GetCategoriesService: GetCategoriesServiceProtocol {
@@ -19,7 +19,7 @@ class GetCategoriesService: GetCategoriesServiceProtocol {
         self.networkClient = networkClient
     }
     
-    public func getCategories() -> AnyPublisher<[LCCategory], Error> {
-        return networkClient.request(GetCategoryEndpoint(), responseType: [LCCategory].self)
+    public func getCategories() -> AnyPublisher<[ADCategory], Error> {
+        return networkClient.request(GetCategoryEndpoint(), responseType: [ADCategory].self)
     }
 }

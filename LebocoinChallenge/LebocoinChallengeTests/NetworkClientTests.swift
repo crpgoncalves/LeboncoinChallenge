@@ -31,7 +31,7 @@ class NetworkClientTests: XCTestCase {
         
         mockNetworkClient.mockData = try? JSONEncoder().encode(GetCategoriesMock.mock)
         
-        mockNetworkClient.request(mockNetworkClient.mockEndpoint, responseType: [LCCategory].self)
+        mockNetworkClient.request(mockNetworkClient.mockEndpoint, responseType: [ADCategory].self)
             .sink(receiveCompletion: { completion in
                 if case .failure = completion {
                     XCTFail("Expected success but got failure")
@@ -49,7 +49,7 @@ class NetworkClientTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Failed network response")
         mockNetworkClient.shouldReturnError = true
         
-        mockNetworkClient.request(mockNetworkClient.mockEndpoint, responseType: [LCCategory].self)
+        mockNetworkClient.request(mockNetworkClient.mockEndpoint, responseType: [ADCategory].self)
             .sink(receiveCompletion: { [weak self] completion in
                 if case .failure(let error) = completion {
                     XCTAssertEqual(error as? NetworkError, self?.mockNetworkClient.mockError)

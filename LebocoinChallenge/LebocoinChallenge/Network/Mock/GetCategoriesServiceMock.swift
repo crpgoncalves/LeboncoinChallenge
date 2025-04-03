@@ -15,7 +15,7 @@ class GetCategoriesServiceMock: GetCategoriesServiceProtocol {
         self.networkClient = networkClient
     }
     
-    func getCategories() -> AnyPublisher<[LCCategory], any Error> {
+    func getCategories() -> AnyPublisher<[ADCategory], any Error> {
         if shouldReturnError {
             return Fail(error: NetworkError.custom("GetCategoriesServiceMock - shouldReturnError")).eraseToAnyPublisher()
         }

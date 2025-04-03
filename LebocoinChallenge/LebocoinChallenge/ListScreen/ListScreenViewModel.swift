@@ -10,7 +10,7 @@ import SwiftUI
 
 
 class ListScreenViewModel: ObservableObject {
-    @Published var categories = [LCCategory]()
+    @Published var categories = [ADCategory]()
     
     private let getCategoryService: GetCategoriesServiceProtocol
     private var cancellables = Set<AnyCancellable>()
