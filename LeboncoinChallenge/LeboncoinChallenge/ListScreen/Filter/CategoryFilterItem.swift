@@ -14,7 +14,7 @@ struct CategoryFilterItem: View {
 
     var body: some View {
         Button(action: action) {
-            HStack {
+            HStack(alignment: .center) {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .foregroundColor(isSelected ? .white : .blue)
                 Text(Localized.string(category.name))

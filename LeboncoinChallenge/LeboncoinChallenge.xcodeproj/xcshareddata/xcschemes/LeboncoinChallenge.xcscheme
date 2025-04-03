@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E3C6A1762D9DAA3F0092D77C"
-               BuildableName = "LebocoinChallenge.app"
-               BlueprintName = "LebocoinChallenge"
-               ReferencedContainer = "container:LebocoinChallenge.xcodeproj">
+               BuildableName = "LeboncoinChallenge.app"
+               BlueprintName = "LeboncoinChallenge"
+               ReferencedContainer = "container:LeboncoinChallenge.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,30 +29,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E3C6A1862D9DAA430092D77C"
-               BuildableName = "LebocoinChallengeTests.xctest"
-               BlueprintName = "LebocoinChallengeTests"
-               ReferencedContainer = "container:LebocoinChallenge.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E3C6A1902D9DAA430092D77C"
-               BuildableName = "LebocoinChallengeUITests.xctest"
-               BlueprintName = "LebocoinChallengeUITests"
-               ReferencedContainer = "container:LebocoinChallenge.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -69,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3C6A1762D9DAA3F0092D77C"
-            BuildableName = "LebocoinChallenge.app"
-            BlueprintName = "LebocoinChallenge"
-            ReferencedContainer = "container:LebocoinChallenge.xcodeproj">
+            BuildableName = "LeboncoinChallenge.app"
+            BlueprintName = "LeboncoinChallenge"
+            ReferencedContainer = "container:LeboncoinChallenge.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -93,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3C6A1762D9DAA3F0092D77C"
-            BuildableName = "LebocoinChallenge.app"
-            BlueprintName = "LebocoinChallenge"
-            ReferencedContainer = "container:LebocoinChallenge.xcodeproj">
+            BuildableName = "LeboncoinChallenge.app"
+            BlueprintName = "LeboncoinChallenge"
+            ReferencedContainer = "container:LeboncoinChallenge.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
