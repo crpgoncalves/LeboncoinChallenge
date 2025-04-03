@@ -17,6 +17,22 @@
         }
       }
     },
+    "list_screen.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lebocoin Challenge"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lebocoin Challenge"
+          }
+        }
+      }
+    },
     "list_screen.urgent" : {
       "localizations" : {
         "en" : {

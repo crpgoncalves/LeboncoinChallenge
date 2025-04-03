@@ -27,7 +27,6 @@ struct ADItemView: View {
                         .frame(height: 200)
                         .cornerRadius(10)
                 }
-                .shadow(radius: 10)
             } else {
                 Color.gray.opacity(0.3)
                     .frame(height: 200)
@@ -50,9 +49,9 @@ struct ADItemView: View {
             if ad.isUrgent {
                 Text("list_screen.urgent")
                     .font(.subheadline)
-                    .foregroundColor(.red)
+                    .foregroundColor(.white)
                     .padding(5)
-                    .background(Capsule().stroke(Color.red, lineWidth: 1))
+                    .background(Capsule().fill(Color.red))
             }
         }
         .padding()

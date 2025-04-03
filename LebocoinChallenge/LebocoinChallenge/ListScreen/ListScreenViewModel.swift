@@ -12,6 +12,15 @@ class ListScreenViewModel: ObservableObject {
     
     @Published var categories = [ADCategory]()
     @Published var ads = [ADModel]()
+    @Published var selectedCategories: Set<Int> = []
+    
+    var filteredAds: [ADModel] {
+        if selectedCategories.isEmpty {
+            return ads
+        } else {
+            return ads.filter { selectedCategories.contains($0.categoryId) }
+        }
+    }
 
     private let getCategoryService: GetCategoriesServiceProtocol
     private let getAdsService: GetAdsServiceProtocol
@@ -43,6 +52,15 @@ class ListScreenViewModel: ObservableObject {
                 self?.ads = response
             })
             .store(in: &cancellables)
-
+        
     }
+    
+    func toggleCategorySelection(_ categoryId: Int) {
+        if selectedCategories.contains(categoryId) {
+            selectedCategories.remove(categoryId)
+        } else {
+            selectedCategories.insert(categoryId)
+        }
+    }
+
 }
