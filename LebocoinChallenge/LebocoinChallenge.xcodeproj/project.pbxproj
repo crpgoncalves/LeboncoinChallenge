@@ -17,7 +17,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E34756052D9EBDA10082AFA1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = LebocoinChallenge/Localizable.xcstrings; sourceTree = "<group>"; };
 		E3C6A1772D9DAA3F0092D77C /* LebocoinChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LebocoinChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C6A1872D9DAA430092D77C /* LebocoinChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LebocoinChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -56,7 +55,6 @@
 		E3C6A16E2D9DAA3F0092D77C = {
 			isa = PBXGroup;
 			children = (
-				E34756052D9EBDA10082AFA1 /* Localizable.xcstrings */,
 				E3C6A1792D9DAA3F0092D77C /* LebocoinChallenge */,
 				E3C6A18A2D9DAA430092D77C /* LebocoinChallengeTests */,
 				E3C6A1782D9DAA3F0092D77C /* Products */,
@@ -147,6 +145,7 @@
 				en,
 				Base,
 				"pt-PT",
+				fr,
 			);
 			mainGroup = E3C6A16E2D9DAA3F0092D77C;
 			minimizedProjectReferenceProxies = 1;

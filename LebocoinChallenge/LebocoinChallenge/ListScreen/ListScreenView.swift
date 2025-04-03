@@ -60,7 +60,7 @@ struct CategoryFilterItem: View {
             HStack {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .foregroundColor(isSelected ? .white : .blue)
-                Text(category.name)
+                Text(Localized.string(category.name))
                     .font(.subheadline)
                     .fontWeight(.bold)
             }

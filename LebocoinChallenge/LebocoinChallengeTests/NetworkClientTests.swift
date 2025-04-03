@@ -37,7 +37,7 @@ class NetworkClientTests: XCTestCase {
                     XCTFail("Expected success but got failure")
                 }
             }, receiveValue: { response in
-                XCTAssertEqual(response.count, 11)
+                XCTAssertEqual(response.count, 11, "It should return 3 Categories from the mock, same reponse type")
                 expectation.fulfill()
             })
             .store(in: &cancellables)

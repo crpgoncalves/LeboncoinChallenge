@@ -11,9 +11,8 @@ import SwiftUI
 class ListScreenViewModel: ObservableObject {
     
     @Published var categories = [ADCategory]()
-    @Published var ads = [ADModel]()
     @Published var selectedCategories: Set<Int> = []
-    
+
     var filteredAds: [ADModel] {
         if selectedCategories.isEmpty {
             return ads
@@ -21,15 +20,19 @@ class ListScreenViewModel: ObservableObject {
             return ads.filter { selectedCategories.contains($0.categoryId) }
         }
     }
-
+    
+    private var ads = [ADModel]()
     private let getCategoryService: GetCategoriesServiceProtocol
     private let getAdsService: GetAdsServiceProtocol
+    private let adCategoryAssociationService: AdCategoryAssociationServiceProtocol
     private var cancellables = Set<AnyCancellable>()
     
     init(getCategoryService: GetCategoriesServiceProtocol = GetCategoriesService(),
-         getAdsService: GetAdsServiceProtocol = GetAdsServiceProtocolService()) {
+         getAdsService: GetAdsServiceProtocol = GetAdsServiceProtocolService(),
+         adCategoryAssociationService: AdCategoryAssociationServiceProtocol = AdCategoryAssociationService()) {
         self.getCategoryService = getCategoryService
         self.getAdsService = getAdsService
+        self.adCategoryAssociationService = adCategoryAssociationService
     }
     
     func fetchCategories() {
@@ -40,6 +43,7 @@ class ListScreenViewModel: ObservableObject {
                 }
             }, receiveValue: { [weak self] response in
                 self?.categories = response
+                self?.associateCategoriesToAds()
             })
             .store(in: &cancellables)
         
@@ -50,6 +54,7 @@ class ListScreenViewModel: ObservableObject {
                 }
             }, receiveValue: { [weak self] response in
                 self?.ads = response
+                self?.associateCategoriesToAds()
             })
             .store(in: &cancellables)
         
@@ -63,4 +68,11 @@ class ListScreenViewModel: ObservableObject {
         }
     }
 
+}
+
+extension ListScreenViewModel {
+
+    private func associateCategoriesToAds() {
+        ads = adCategoryAssociationService.associateCategoriesToAds(ads: ads, categories: categories)
+    }
 }

@@ -30,6 +30,7 @@ struct ADModel: Codable, Identifiable {
     let imagesURL: ImagesURL
     let creationDate: String
     let isUrgent: Bool
+    var category: ADCategory?
 
     enum CodingKeys: String, CodingKey {
         case id

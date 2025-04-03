@@ -33,7 +33,7 @@ struct ADItemView: View {
                     .cornerRadius(10)
             }
             
-            Text("list_screen.category: \(ad.categoryId)")
+            Text("list_screen.category: \(Localized.string(ad.category?.name))")
                 .font(.subheadline)
                 .foregroundColor(.gray)
             

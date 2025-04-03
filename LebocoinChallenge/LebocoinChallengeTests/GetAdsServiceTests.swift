@@ -35,7 +35,7 @@ class GetAdsServiceTests: XCTestCase {
                     XCTFail("Expected success but got failure: \(error.localizedDescription)")
                 }
             }, receiveValue: { ads in
-                XCTAssertEqual(ads.count, 3)
+                XCTAssertEqual(ads.count, 3, "Should return 3 Ads from the mock")
                 expectation.fulfill()
             })
             .store(in: &cancellables)

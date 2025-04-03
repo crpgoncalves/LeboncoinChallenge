@@ -35,7 +35,7 @@ class GetCategoriesServiceTests: XCTestCase {
                     XCTFail("Expected success but got failure: \(error.localizedDescription)")
                 }
             }, receiveValue: { categories in
-                XCTAssertEqual(categories.count, 11)
+                XCTAssertEqual(categories.count, 11, "It should return 11 Categories from the mock")
                 expectation.fulfill()
             })
             .store(in: &cancellables)
