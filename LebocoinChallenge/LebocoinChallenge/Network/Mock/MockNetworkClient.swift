@@ -5,8 +5,8 @@
 //  Created by Carlos Gonçalves on 02/04/2025.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 final class MockNetworkClient: NetworkRequestable {
     

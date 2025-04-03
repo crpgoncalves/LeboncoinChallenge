@@ -5,7 +5,6 @@
 //  Created by Carlos Gonçalves on 02/04/2025.
 //
 
-
 enum NetworkError: Error, Equatable {
     case badUrl
     case invalidResponse

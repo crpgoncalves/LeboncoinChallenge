@@ -62,4 +62,21 @@ class NetworkClientTests: XCTestCase {
         
         wait(for: [expectation], timeout: 5.0)
     }
+    
+    func testFetch_FailureResponse_NoData() {
+        let expectation = XCTestExpectation(description: "Failed network response")
+        
+        mockNetworkClient.request(mockNetworkClient.mockEndpoint, responseType: [ADCategory].self)
+            .sink(receiveCompletion: { [weak self] completion in
+                if case .failure(let error) = completion {
+                    XCTAssertEqual(error as? NetworkError, self?.mockNetworkClient.mockError)
+                    expectation.fulfill()
+                }
+            }, receiveValue: { _ in
+                XCTFail("Expected failure but got success")
+            })
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 5.0)
+    }
 }

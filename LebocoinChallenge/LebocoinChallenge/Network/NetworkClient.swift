@@ -67,11 +67,23 @@ final class NetworkClient: NetworkRequestable {
             .retry(3)
             .decode(type: T.self, decoder: JSONDecoder())
             .mapError { error -> NetworkError in
-                if error is DecodingError {
-                    print("[NetworkClient] - Decoding error")
+                print("[NetworkClient] - Error: \(error.localizedDescription)")
+                if let decodingError = error as? DecodingError {
+                    switch decodingError {
+                    case .typeMismatch(let key, let context):
+                        print("[DecodingError] Type mismatch for key '\(key)': \(context.debugDescription)")
+                    case .valueNotFound(let key, let context):
+                        print("[DecodingError] Value not found for key '\(key)': \(context.debugDescription)")
+                    case .keyNotFound(let key, let context):
+                        print("[DecodingError] Key '\(key)' not found: \(context.debugDescription)")
+                    case .dataCorrupted(let context):
+                        print("[DecodingError] Data corrupted: \(context.debugDescription)")
+                    @unknown default:
+                        print("[DecodingError] Unknown error")
+                    }
                     return NetworkError.decodingError
                 }
-                print("[NetworkClient] - Error: \(error.localizedDescription)")
+                    
                 return NetworkError.custom("Network Error: \(error.localizedDescription)")
             }
             .receive(on: DispatchQueue.main)

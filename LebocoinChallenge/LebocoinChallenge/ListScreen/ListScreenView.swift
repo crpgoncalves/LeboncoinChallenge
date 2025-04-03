@@ -12,8 +12,11 @@ struct ListScreenView: View {
     @StateObject private var vm = ListScreenViewModel()
     
     var body: some View {
-        ForEach(vm.categories) {
-            Text($0.name)
+        VStack {
+            Text("\(vm.ads.count)")
+            ForEach(vm.categories) {
+                Text($0.name)
+            }
         }
         .onAppear {
             vm.fetchCategories()
