@@ -12,6 +12,7 @@ class ListScreenViewModel: ObservableObject {
     
     @Published var categories = [ADCategory]()
     @Published var selectedCategories: Set<Int> = []
+    @Published var isLoading = false
 
     var filteredAds: [ADModel] {
         if selectedCategories.isEmpty {
@@ -36,28 +37,22 @@ class ListScreenViewModel: ObservableObject {
     }
     
     func fetchCategories() {
-        getCategoryService.getCategories()
+        isLoading = true
+        let categoriesPublisher = getCategoryService.getCategories()
+        let adsPublisher = getAdsService.getAds()
+        
+        Publishers.Zip(categoriesPublisher, adsPublisher)
             .sink(receiveCompletion: { completion in
                 if case .failure(let error) = completion {
                     print(error.localizedDescription)
                 }
-            }, receiveValue: { [weak self] response in
-                self?.categories = response
+            }, receiveValue: { [weak self] categoriesResponse, adsResponse in
+                self?.categories = categoriesResponse
+                self?.ads = adsResponse
                 self?.associateCategoriesToAds()
+                self?.isLoading = false 
             })
             .store(in: &cancellables)
-        
-        getAdsService.getAds()
-            .sink(receiveCompletion: { completion in
-                if case .failure(let error) = completion {
-                    print(error.localizedDescription)
-                }
-            }, receiveValue: { [weak self] response in
-                self?.ads = response
-                self?.associateCategoriesToAds()
-            })
-            .store(in: &cancellables)
-        
     }
     
     func toggleCategorySelection(_ categoryId: Int) {

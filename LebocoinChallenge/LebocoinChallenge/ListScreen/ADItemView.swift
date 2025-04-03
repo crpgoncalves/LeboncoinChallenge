@@ -42,7 +42,7 @@ struct ADItemView: View {
                 .fontWeight(.bold)
                 .lineLimit(2)
             
-            Text(String(format: "%.2f€", ad.price))
+            Text(PriceFormatter.formatPrice(ad.price))
                 .font(.title3)
                 .foregroundColor(.green)
             
