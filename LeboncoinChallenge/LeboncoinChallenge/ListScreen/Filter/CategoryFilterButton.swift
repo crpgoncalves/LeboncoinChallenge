@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct CategoryFilterButton: View {
-    
     @Binding var showCategoryModal: Bool
     @Binding var selectedCategories: Set<Int>
 
     var body: some View {
+
         HStack {
             Button(action: {
                 showCategoryModal.toggle()
