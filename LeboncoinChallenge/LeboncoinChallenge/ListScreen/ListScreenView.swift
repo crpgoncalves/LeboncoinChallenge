@@ -9,45 +9,36 @@ import SwiftUI
 struct ListScreenView: View {
     
     @StateObject private var vm = ListScreenViewModel()
-
+    @State private var showCategoryModal = false
+    
     var columns: [GridItem] {
         return Array(repeating: GridItem(.flexible()), count: 1)
     }
     
     var body: some View {
         NavigationView {
-            VStack {
-                ScrollView(.horizontal,
-                           showsIndicators: false) {
-                    HStack(spacing: 10) {
-                        ForEach(vm.categories) { category in
-                            CategoryFilterItem(category: category,
-                                               isSelected: vm.selectedCategories.contains(category.id)) {
-                                withAnimation {
-                                    vm.toggleCategorySelection(category.id)
-                                }
-                            }
-                        }
+            
+            ScrollView(showsIndicators: false) {
+                
+                CategoryFilterButton(showCategoryModal: $showCategoryModal,
+                                     selectedCategories: $vm.selectedCategories)
+                LazyVGrid(columns: columns) {
+                    ForEach(vm.filteredAds) { ad in
+                        ADItemView(ad: ad)
                     }
-                    .padding()
-                }
-
-                ScrollView(showsIndicators: false) {
-                    LazyVGrid(columns: columns) {
-                        ForEach(vm.filteredAds) { ad in
-                            ADItemView(ad: ad)
-                        }
-                    }
-                    .padding()
                 }
             }
             .navigationTitle("list_screen.title")
             .navigationBarTitleDisplayMode(.inline)
+            .fullScreenCover(isPresented: $showCategoryModal) {
+                CategoryFilterItem(vm: vm)
+            }
         }
         .onAppear {
-            vm.fetchCategories()
+            vm.fetchData()
         }
     }
+    
 }
 
 #Preview {

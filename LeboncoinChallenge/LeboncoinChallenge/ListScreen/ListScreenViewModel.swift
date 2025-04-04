@@ -36,7 +36,7 @@ class ListScreenViewModel: ObservableObject {
         self.adCategoryAssociationService = adCategoryAssociationService
     }
     
-    func fetchCategories() {
+    func fetchData() {
         isLoading = true
         let categoriesPublisher = getCategoryService.getCategories()
         let adsPublisher = getAdsService.getAds()
@@ -47,7 +47,10 @@ class ListScreenViewModel: ObservableObject {
                     print(error.localizedDescription)
                 }
             }, receiveValue: { [weak self] categoriesResponse, adsResponse in
-                self?.categories = categoriesResponse
+                self?.categories = categoriesResponse.sorted {
+                    //If user changes language during the execution it wont be sorted
+                    Localized.string($0.name).localizedCaseInsensitiveCompare(Localized.string($1.name)) == .orderedAscending
+                }
                 self?.ads = adsResponse
                 self?.associateCategoriesToAds()
                 self?.isLoading = false 

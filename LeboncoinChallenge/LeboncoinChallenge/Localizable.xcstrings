@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld" : {
+
+    },
     "Animaux" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -47,6 +50,28 @@
         }
       }
     },
+    "button_close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fechar"
+          }
+        }
+      }
+    },
     "Enfants" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -76,7 +101,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Real estate\n"
+            "value" : "Real estate"
           }
         },
         "fr" : {
@@ -93,6 +118,51 @@
         }
       }
     },
+    "list_screen.categories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categories"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Catégories"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorias"
+          }
+        }
+      }
+    },
+    "list_screen.categories_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categories"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Catégories"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorias"
+          }
+        }
+      }
+    },
     "list_screen.category: %@" : {
       "localizations" : {
         "en" : {
@@ -104,7 +174,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Categorie: %@"
+            "value" : "Catégorie: %@"
           }
         },
         "pt-PT" : {
@@ -125,7 +195,7 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Leboncoin Challenge"
           }
         },

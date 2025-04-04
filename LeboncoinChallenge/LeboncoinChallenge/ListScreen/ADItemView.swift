@@ -50,7 +50,8 @@ struct ADItemView: View {
                 Text("list_screen.urgent")
                     .font(.subheadline)
                     .foregroundColor(.white)
-                    .padding(5)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 8)
                     .background(Capsule().fill(Color.red))
             }
         }

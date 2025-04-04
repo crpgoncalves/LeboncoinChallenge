@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 @main
 struct LeboncoinChallengeApp: App {
     @State private var isLaunchScreenActive = true
@@ -14,9 +13,14 @@ struct LeboncoinChallengeApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
+                ListScreenView()
+                    .opacity(isLaunchScreenActive ? 0 : 1)
+                    .animation(.easeInOut(duration: 0.5), value: isLaunchScreenActive)
+
                 if isLaunchScreenActive {
                     LaunchViewControllerRepresentable()
                         .transition(.opacity)
+                        .zIndex(1)
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                 withAnimation {
@@ -24,8 +28,6 @@ struct LeboncoinChallengeApp: App {
                                 }
                             }
                         }
-                } else {
-                    ListScreenView()
                 }
             }
         }
