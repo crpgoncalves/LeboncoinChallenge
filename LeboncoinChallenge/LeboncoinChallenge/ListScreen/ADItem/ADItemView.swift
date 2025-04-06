@@ -14,23 +14,36 @@ struct ADItemView: View {
         let theme = AppTheme.current(for: colorScheme)
         
         VStack(alignment: .leading, spacing: 12) {
-            if let url = URL(string: ad.image) {
-                AsyncImage(url: url) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 220)
-                        .cornerRadius(20)
-                        .clipped()
-                        .shadow(radius: 10)
-                } placeholder: {
-                    theme.secondaryColor.opacity(0.3)
-                        .frame(height: 220)
-                        .cornerRadius(20)
-                        .shadow(radius: 10)
-                }
-            }
             
+            if let url = URL(string: ad.image) {
+                AsyncImage(url: url) { phase in
+                    switch phase {
+                    case .empty:
+                        theme.secondaryColor.opacity(0.3)
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .clipped()
+                    
+                    case .failure(_):
+                        VStack(spacing: 10) {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .foregroundColor(.red)
+                                .font(.largeTitle)
+                            Text("cached.async.download_failed")
+                                .font(.subheadline)
+                        }
+                    @unknown default:
+                        EmptyView()
+                    }
+                }
+                .frame(height: 220)
+                .cornerRadius(20)
+                .shadow(radius: 10)
+                .frame(maxWidth: .infinity, alignment: .center)
+            }
+
             Text(ad.categoryName)
                 .font(.subheadline)
                 .fontWeight(.semibold)

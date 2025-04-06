@@ -37,6 +37,12 @@ class ListScreenViewModel: ObservableObject {
     }
     
     func fetchData() {
+        
+        guard ads.isEmpty || categories.isEmpty else {
+            //once we dont support pagination, just request data when dataSource is empty
+            return
+        }
+    
         isLoading = true
         let categoriesPublisher = getCategoryService.getCategories()
         let adsPublisher = getAdsService.getAds()

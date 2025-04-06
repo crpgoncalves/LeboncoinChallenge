@@ -35,10 +35,3 @@ class ADItemViewModel: ObservableObject {
         ad.isUrgent
     }
 }
-
-
-//Localized.string(ad.category?.name)
-//ad.imagesURL.thumb
-//ad.title
-//PriceFormatter.formatPrice(ad.price)
-//ad.isUrgent
