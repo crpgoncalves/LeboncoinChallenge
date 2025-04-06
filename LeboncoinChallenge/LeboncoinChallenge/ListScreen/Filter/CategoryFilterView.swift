@@ -62,6 +62,16 @@ struct CategoryFilterItem: View {
                             .foregroundColor(.blue)
                     }
                 }
+                
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        vm.resetFilter()
+                    }) {
+                        HStack {
+                            Image(systemName: "arrow.clockwise")
+                        }
+                    }
+                }
             }
         }
         .accentColor(.blue)

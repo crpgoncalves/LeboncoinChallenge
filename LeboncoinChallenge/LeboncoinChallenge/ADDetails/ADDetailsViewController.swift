@@ -136,13 +136,16 @@ class ADDetailsViewController: UIViewController {
 
         if let url = URL(string: ad.image) {
             loadImage(from: url)
+        } else {
+            adImageView.removeFromSuperview()
         }
     }
 
     private func loadImage(from url: URL) {
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             DispatchQueue.main.async { [weak self ] in
-                guard let data = data, let image = UIImage(data: data) else {
+                guard let data = data,
+                      let image = UIImage(data: data) else {
                     self?.adImageView.removeFromSuperview()
                     return
                 }

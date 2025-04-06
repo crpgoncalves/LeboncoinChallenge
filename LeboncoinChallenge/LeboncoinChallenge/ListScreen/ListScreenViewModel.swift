@@ -72,6 +72,10 @@ class ListScreenViewModel: ObservableObject {
             selectedCategories.insert(categoryId)
         }
     }
+    
+    func resetFilter() {
+        selectedCategories.removeAll()
+    }
 
 }
 

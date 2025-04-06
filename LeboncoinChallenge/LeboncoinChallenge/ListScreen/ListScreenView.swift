@@ -4,16 +4,25 @@
 //
 //  Created by Carlos Gonçalves on 02/04/2025.
 //
+
 import SwiftUI
 struct ListScreenView: View {
     
     @StateObject private var vm = ListScreenViewModel()
     @State private var showCategoryModal = false
+    @State private var orientation = UIDeviceOrientation.unknown
     
+    /*
+     iPhone && portrait - 1 column
+     iPhone && !portrait - 2 columns
+     iPad && portrait - 2 columns
+     iPad && !portrait - 3 columns
+     */
     var columns: [GridItem] {
-        let columnsCount = UIScreen.main.bounds.width > 600 ? 2 : 1 
-        return Array(repeating: GridItem(.flexible()), count: columnsCount)
+        return Array(repeating: GridItem(.flexible()),
+                     count: UIDevice.current.userInterfaceIdiom == .phone ? (orientation.isPortrait ? 1 : 2) : (orientation.isPortrait ? 2 : 3))
     }
+    
     var body: some View {
         NavigationView {
             if vm.isLoading {
@@ -40,6 +49,9 @@ struct ListScreenView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .onRotate {
+            orientation = $0
+        }
         .onAppear {
             vm.fetchData()
         }

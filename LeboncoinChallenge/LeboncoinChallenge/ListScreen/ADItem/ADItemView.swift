@@ -14,7 +14,7 @@ struct ADItemView: View {
         let theme = AppTheme.current(for: colorScheme)
         
         VStack(alignment: .leading, spacing: 12) {
-            
+            Spacer()
             if let url = URL(string: ad.image) {
                 AsyncImage(url: url) { phase in
                     switch phase {
@@ -77,6 +77,7 @@ struct ADItemView: View {
                         .transition(.scale)
                 }
             }
+            Spacer()
         }
         .padding()
         .background(theme.backgroundColor)
