@@ -8,14 +8,13 @@ import SwiftUI
 
 struct ADItemView: View {
     @Environment(\.colorScheme) var colorScheme
-    let ad: ADModel
+    let ad: ADItemViewModel
     
     var body: some View {
         let theme = AppTheme.current(for: colorScheme)
         
         VStack(alignment: .leading, spacing: 12) {
-            if let imageUrl = ad.imagesURL.thumb,
-                let url = URL(string: imageUrl) {
+            if let url = URL(string: ad.image) {
                 AsyncImage(url: url) { image in
                     image
                         .resizable()
@@ -32,7 +31,7 @@ struct ADItemView: View {
                 }
             }
             
-            Text(Localized.string(ad.category?.name))
+            Text(ad.categoryName)
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .foregroundColor(theme.secondaryColor)
@@ -46,7 +45,7 @@ struct ADItemView: View {
                 .truncationMode(.tail)
             
             HStack {
-                Text(PriceFormatter.formatPrice(ad.price))
+                Text(ad.price)
                     .font(.title3)
                     .fontWeight(.medium)
                     .foregroundColor(.green)
@@ -69,7 +68,7 @@ struct ADItemView: View {
         .cornerRadius(20)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(theme.secondaryColor, lineWidth: 2)
+                .stroke(Color.gray.opacity(0.5), lineWidth: 2)
         )
         .shadow(radius: 12)
         .padding(.horizontal)
@@ -78,15 +77,16 @@ struct ADItemView: View {
 
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ADItemView(ad: ADModel(id: 1,
-                               categoryId: 2,
-                               title: "Amazing Product",
-                               description: "This is an amazing product",
-                               price: 99.99,
-                               imagesURL: ImagesURL(small: nil,
-                                                    thumb: "https://example.com/image.jpg"),
-                               creationDate: "2025-04-03",
-                               isUrgent: true))
+        ADItemView(ad: ADItemViewModel(ad:
+                                        ADModel(id: 1,
+                                                categoryId: 2,
+                                                title: "Amazing Product",
+                                                description: "This is an amazing product",
+                                                price: 99.99,
+                                                imagesURL: ImagesURL(small: nil,
+                                                                     thumb: "https://example.com/image.jpg"),
+                                                creationDate: "2025-04-03",
+                                                isUrgent: true)))
         .previewLayout(.sizeThatFits)
         .padding()
     }

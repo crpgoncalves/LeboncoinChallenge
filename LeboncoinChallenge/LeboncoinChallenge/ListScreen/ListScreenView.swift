@@ -22,9 +22,9 @@ struct ListScreenView: View {
                 
                 CategoryFilterButton(showCategoryModal: $showCategoryModal,
                                      selectedCategories: $vm.selectedCategories)
-                LazyVGrid(columns: columns) {
+                LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(vm.filteredAds) { ad in
-                        ADItemView(ad: ad)
+                        ADItemView(ad: ADItemViewModel(ad: ad))
                     }
                 }
             }
