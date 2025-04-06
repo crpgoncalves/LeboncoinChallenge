@@ -23,7 +23,7 @@ struct ADItemView: View {
                     case .success(let image):
                         image
                             .resizable()
-                            .scaledToFill()
+                            .scaledToFit()
                             .clipped()
                             .shadow(radius: 10)
 

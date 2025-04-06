@@ -60,33 +60,38 @@ class ADDetailsViewController: UIViewController {
 
         adImageView.contentMode = .scaleAspectFill
         adImageView.clipsToBounds = true
-        adImageView.layer.cornerRadius = 10
+        adImageView.layer.cornerRadius = 15
+        adImageView.layer.shadowColor = UIColor.black.cgColor
+        adImageView.layer.shadowOpacity = 0.3
+        adImageView.layer.shadowRadius = 10
+        adImageView.layer.shadowOffset = CGSize(width: 0, height: 5)
         adImageView.translatesAutoresizingMaskIntoConstraints = false
 
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+        titleLabel.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
         titleLabel.numberOfLines = 0
-        titleLabel.textColor = .black
+        titleLabel.textColor = .label
+        titleLabel.lineBreakMode = .byWordWrapping
 
-        descriptionLabel.font = UIFont.systemFont(ofSize: 16)
+        descriptionLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.textColor = .darkGray
+        descriptionLabel.textColor = .secondaryLabel
 
-        priceLabel.font = UIFont.systemFont(ofSize: 18)
+        priceLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         priceLabel.textColor = .systemGreen
 
-        creationDateLabel.font = UIFont.systemFont(ofSize: 14)
-        creationDateLabel.textColor = .lightGray
+        creationDateLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
+        creationDateLabel.textColor = .tertiaryLabel
 
-        urgentView.backgroundColor = .red
-        urgentView.layer.cornerRadius = 8
+        urgentView.backgroundColor = .systemRed
+        urgentView.layer.cornerRadius = 20
         urgentView.layer.masksToBounds = true
         urgentView.translatesAutoresizingMaskIntoConstraints = false
 
-        urgentLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        urgentLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         urgentLabel.textColor = .white
         urgentLabel.text = Localized.string("details_screen.urgent")
         urgentLabel.textAlignment = .center
-        urgentLabel.numberOfLines = 0
+        urgentLabel.numberOfLines = 1
         urgentLabel.translatesAutoresizingMaskIntoConstraints = false
 
         urgentView.addSubview(urgentLabel)
@@ -100,7 +105,7 @@ class ADDetailsViewController: UIViewController {
             urgentView
         ])
         stackView.axis = .vertical
-        stackView.spacing = 16
+        stackView.spacing = 20
         stackView.alignment = .fill
         stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -108,18 +113,14 @@ class ADDetailsViewController: UIViewController {
         contentView.addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
 
-            adImageView.heightAnchor.constraint(equalToConstant: 200),
             urgentView.heightAnchor.constraint(equalToConstant: 40),
-
-            urgentLabel.topAnchor.constraint(equalTo: urgentView.topAnchor, constant: 8),
-            urgentLabel.bottomAnchor.constraint(equalTo: urgentView.bottomAnchor, constant: -8),
-            urgentLabel.leadingAnchor.constraint(equalTo: urgentView.leadingAnchor, constant: 8),
-            urgentLabel.trailingAnchor.constraint(equalTo: urgentView.trailingAnchor, constant: -8)
+            urgentLabel.centerXAnchor.constraint(equalTo: urgentView.centerXAnchor),
+            urgentLabel.centerYAnchor.constraint(equalTo: urgentView.centerYAnchor)
         ])
     }
 
