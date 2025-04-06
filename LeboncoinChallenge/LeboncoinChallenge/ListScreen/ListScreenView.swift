@@ -18,7 +18,6 @@ struct ListScreenView: View {
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false) {
-                
                 CategoryFilterButton(showCategoryModal: $showCategoryModal,
                                      selectedCategories: $vm.selectedCategories)
                 LazyVGrid(columns: columns, spacing: 20) {
