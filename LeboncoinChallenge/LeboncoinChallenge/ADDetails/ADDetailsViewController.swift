@@ -58,13 +58,12 @@ class ADDetailsViewController: UIViewController {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
 
-        adImageView.contentMode = .scaleAspectFill
+        adImageView.contentMode = .scaleToFill
         adImageView.clipsToBounds = true
         adImageView.layer.cornerRadius = 15
         adImageView.layer.shadowColor = UIColor.black.cgColor
-        adImageView.layer.shadowOpacity = 0.3
         adImageView.layer.shadowRadius = 10
-        adImageView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        adImageView.layer.masksToBounds = true
         adImageView.translatesAutoresizingMaskIntoConstraints = false
 
         titleLabel.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
@@ -120,7 +119,10 @@ class ADDetailsViewController: UIViewController {
 
             urgentView.heightAnchor.constraint(equalToConstant: 40),
             urgentLabel.centerXAnchor.constraint(equalTo: urgentView.centerXAnchor),
-            urgentLabel.centerYAnchor.constraint(equalTo: urgentView.centerYAnchor)
+            urgentLabel.centerYAnchor.constraint(equalTo: urgentView.centerYAnchor),
+            
+            adImageView.widthAnchor.constraint(equalTo: stackView.widthAnchor),
+            adImageView.heightAnchor.constraint(greaterThanOrEqualTo: adImageView.widthAnchor, multiplier: 0.75)
         ])
     }
 
@@ -139,7 +141,7 @@ class ADDetailsViewController: UIViewController {
 
     private func loadImage(from url: URL) {
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self ] in
                 guard let data = data, let image = UIImage(data: data) else {
                     self?.adImageView.removeFromSuperview()
                     return

@@ -48,9 +48,10 @@ class ListScreenViewModel: ObservableObject {
         let adsPublisher = getAdsService.getAds()
         
         Publishers.Zip(categoriesPublisher, adsPublisher)
-            .sink(receiveCompletion: { completion in
+            .sink(receiveCompletion: { [weak self] completion in
                 if case .failure(let error) = completion {
                     print(error.localizedDescription)
+                    self?.isLoading = false
                 }
             }, receiveValue: { [weak self] categoriesResponse, adsResponse in
                 self?.categories = categoriesResponse.sorted {
@@ -59,7 +60,7 @@ class ListScreenViewModel: ObservableObject {
                 }
                 self?.ads = adsResponse
                 self?.associateCategoriesToAds()
-                self?.isLoading = false 
+                self?.isLoading = false
             })
             .store(in: &cancellables)
     }

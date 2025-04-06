@@ -246,6 +246,28 @@
         }
       }
     },
+    "list_screen.loading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chargement..."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A carregar…"
+          }
+        }
+      }
+    },
     "list_screen.title" : {
       "localizations" : {
         "en" : {
