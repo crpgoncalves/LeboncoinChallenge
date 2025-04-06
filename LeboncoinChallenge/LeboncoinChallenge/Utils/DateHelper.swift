@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DateHelper {
+enum DateHelper {
     
     private static var inputDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
