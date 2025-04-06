@@ -15,6 +15,13 @@ class ADItemViewModel: ObservableObject {
         self.ad = ad
     }
     
+    var description: String {
+        ad.description
+    }
+    
+    var date: String {
+        DateHelper.formatDate(from: ad.creationDate)
+    }
     var categoryName: String {
         Localized.string(ad.category?.name)
     }

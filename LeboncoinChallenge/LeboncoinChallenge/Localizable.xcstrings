@@ -8,6 +8,12 @@
             "state" : "translated",
             "value" : "Désolé, une erreur est survenue lors du chargement de l'image."
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
         }
       }
     },
@@ -98,6 +104,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desculpe, ocorreu um erro ao tentar carregar a imagem."
+          }
+        }
+      }
+    },
+    "details_screen.urgent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Urgent"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Urgent"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Urgente"
           }
         }
       }

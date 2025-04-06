@@ -17,14 +17,17 @@ struct ListScreenView: View {
     
     var body: some View {
         NavigationView {
-            
             ScrollView(showsIndicators: false) {
                 
                 CategoryFilterButton(showCategoryModal: $showCategoryModal,
                                      selectedCategories: $vm.selectedCategories)
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(vm.filteredAds) { ad in
-                        ADItemView(ad: ADItemViewModel(ad: ad))
+                        NavigationLink(
+                            destination: ADDetailsViewControllerWrapper(ad: ADItemViewModel(ad: ad)),
+                            label: {
+                                ADItemView(ad: ADItemViewModel(ad: ad))
+                            })
                     }
                 }
             }

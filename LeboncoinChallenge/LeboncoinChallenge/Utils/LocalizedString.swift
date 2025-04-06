@@ -8,7 +8,7 @@
 import Foundation
 
 /// Allow to localize some strings like Categories name for example
-struct Localized {
+enum Localized {
     static func string(_ key: String?, _ comment: String? = nil) -> String {
         guard let key = key else {
             return ""

@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct PriceFormatter {
-    
+enum PriceFormatter {
     private static var formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency

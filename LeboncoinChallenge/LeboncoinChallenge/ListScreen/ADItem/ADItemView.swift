@@ -25,6 +25,8 @@ struct ADItemView: View {
                             .resizable()
                             .scaledToFill()
                             .clipped()
+                            .shadow(radius: 10)
+
                     
                     case .failure(_):
                         VStack(spacing: 10) {
@@ -33,6 +35,7 @@ struct ADItemView: View {
                                 .font(.largeTitle)
                             Text("cached.async.download_failed")
                                 .font(.subheadline)
+                                .foregroundColor(theme.textColor)
                         }
                     @unknown default:
                         EmptyView()
@@ -40,7 +43,6 @@ struct ADItemView: View {
                 }
                 .frame(height: 220)
                 .cornerRadius(20)
-                .shadow(radius: 10)
                 .frame(maxWidth: .infinity, alignment: .center)
             }
 
