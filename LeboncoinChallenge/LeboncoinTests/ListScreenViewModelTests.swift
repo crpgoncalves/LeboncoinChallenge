@@ -96,11 +96,9 @@ class ListScreenViewModelTests: XCTestCase {
         let categoryId = 4
         
         viewModel.toggleCategorySelection(categoryId)
-        
         XCTAssertTrue(viewModel.selectedCategories.contains(categoryId))
         
         viewModel.toggleCategorySelection(categoryId)
-        
         XCTAssertFalse(viewModel.selectedCategories.contains(categoryId))
     }
 }
