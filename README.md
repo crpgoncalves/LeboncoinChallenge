@@ -37,8 +37,9 @@ If you dont do this configuration xCode will use the fallback URL wich is define
 2. Go to `Run`
 3. Select `Arguments` Tab
 4. Add the Environment Variable as shown (`BASE_URL` key with value `$(BASE_URL)`)
-   
-![Screenshot 2025-04-03 at 10 33 02](https://github.com/user-attachments/assets/56a8795a-3fee-4b2a-b2fc-cc082de79030)
+
+<img width="934" alt="Screenshot 2025-04-07 at 10 24 30" src="https://github.com/user-attachments/assets/b3751b21-bc60-468a-869a-a09c00301a23" />
+
 
 
 ### Used Stack
