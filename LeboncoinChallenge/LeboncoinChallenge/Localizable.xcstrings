@@ -291,6 +291,28 @@
         }
       }
     },
+    "list_screen.serach.filter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look for an ad…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Cherchez une annonce…"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Procure um anúncio…"
+          }
+        }
+      }
+    },
     "list_screen.title" : {
       "localizations" : {
         "en" : {

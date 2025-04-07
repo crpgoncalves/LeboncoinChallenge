@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 struct ListScreenView: View {
     
     @StateObject private var vm = ListScreenViewModel()
@@ -28,26 +29,38 @@ struct ListScreenView: View {
             if vm.isLoading {
                 LoadingView()
             } else {
-                ScrollView(showsIndicators: false) {
+                VStack {
+                    TextField("list_screen.serach.filter", text: $vm.searchText)
+                        .padding()
+                        .background(.clear)
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(8)
+                        .padding([.leading, .trailing])
+                    
                     CategoryFilterButton(showCategoryModal: $showCategoryModal,
                                          selectedCategories: $vm.selectedCategories)
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(vm.filteredAds) { ad in
-                            NavigationLink(
-                                destination: ADDetailsViewControllerWrapper(ad: ADItemViewModel(ad: ad)),
-                                label: {
-                                    ADItemView(ad: ADItemViewModel(ad: ad))
-                                })
+                    
+                    ScrollView(showsIndicators: false) {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(vm.filteredAds) { ad in
+                                NavigationLink(
+                                    destination: ADDetailsViewControllerWrapper(
+                                        ad: ADItemViewModel(ad: ad)),
+                                    label: {
+                                        ADItemView(ad: ADItemViewModel(ad: ad))
+                                    })
+                            }
                         }
                     }
                 }
-                .navigationTitle("list_screen.title")
-                .navigationBarTitleDisplayMode(.inline)
-                .fullScreenCover(isPresented: $showCategoryModal) {
-                    CategoryFilterItem(vm: vm)
-                }
+
             }
         }
+        .fullScreenCover(isPresented: $showCategoryModal) {
+            CategoryFilterItem(vm: vm)
+        }
+        .navigationTitle("list_screen.title")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(StackNavigationViewStyle())
         .onRotate {
             orientation = $0

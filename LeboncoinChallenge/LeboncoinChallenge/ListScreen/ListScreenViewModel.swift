@@ -12,13 +12,16 @@ class ListScreenViewModel: ObservableObject {
     
     @Published var categories = [ADCategory]()
     @Published var selectedCategories: Set<Int> = []
+    @Published var searchText = ""
     @Published var isLoading = false
 
     var filteredAds: [ADModel] {
-        if selectedCategories.isEmpty {
-            return ads
-        } else {
-            return ads.filter { selectedCategories.contains($0.categoryId) }
+        let filteredByCategory = ads.filter { ad in
+            selectedCategories.isEmpty || selectedCategories.contains(ad.categoryId)
+        }
+        
+        return filteredByCategory.filter { ad in
+            searchText.isEmpty || ad.title.localizedCaseInsensitiveContains(searchText)
         }
     }
     

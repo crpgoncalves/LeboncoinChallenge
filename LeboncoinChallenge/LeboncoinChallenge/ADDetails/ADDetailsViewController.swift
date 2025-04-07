@@ -4,7 +4,9 @@
 //
 //  Created by Carlos Gonçalves on 06/04/2025.
 //
+
 import UIKit
+
 class ADDetailsViewController: UIViewController {
 
     let ad: ADItemViewModel

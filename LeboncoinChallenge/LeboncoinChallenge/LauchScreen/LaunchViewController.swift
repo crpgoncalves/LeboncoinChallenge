@@ -5,8 +5,8 @@
 //  Created by Carlos Gonçalves on 03/04/2025.
 //
 
-
 import UIKit
+
 class LaunchViewController: UIViewController {
 
     override func viewDidLoad() {
