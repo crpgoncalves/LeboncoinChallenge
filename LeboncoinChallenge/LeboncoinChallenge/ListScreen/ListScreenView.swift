@@ -30,12 +30,21 @@ struct ListScreenView: View {
                 LoadingView()
             } else {
                 VStack {
-                    TextField("list_screen.serach.filter", text: $vm.searchText)
-                        .padding()
-                        .background(.clear)
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(8)
-                        .padding([.leading, .trailing])
+                    HStack {
+                        TextField("list_screen.search.filter", text: $vm.searchText)
+                        Spacer()
+                        Button {
+                            vm.resetSearch()
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                        }
+                    }
+                    .padding()
+                    .background(.clear)
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(8)
+                    .padding([.leading, .trailing])
+                    
                     
                     CategoryFilterButton(showCategoryModal: $showCategoryModal,
                                          selectedCategories: $vm.selectedCategories)

@@ -80,6 +80,9 @@ class ListScreenViewModel: ObservableObject {
         selectedCategories.removeAll()
     }
 
+    func resetSearch() {
+        searchText = ""
+    }
 }
 
 extension ListScreenViewModel {

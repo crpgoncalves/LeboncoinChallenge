@@ -291,7 +291,7 @@
         }
       }
     },
-    "list_screen.serach.filter" : {
+    "list_screen.search.filter" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -301,13 +301,13 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Cherchez une annonce…"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Procure um anúncio…"
           }
         }
