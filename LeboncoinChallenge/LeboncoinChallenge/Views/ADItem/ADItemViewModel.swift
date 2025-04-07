@@ -6,13 +6,17 @@
 //
 
 import Foundation
+import UIKit
 
 class ADItemViewModel: ObservableObject {
     
     private let ad: ADModel
+    private let imageLoader: ImageLoading
     
-    init(ad: ADModel) {
+    init(ad: ADModel,
+         imageLoader: ImageLoading = ImageLoader.shared) {
         self.ad = ad
+        self.imageLoader = imageLoader
     }
     
     var description: String {
@@ -40,5 +44,11 @@ class ADItemViewModel: ObservableObject {
     
     var isUrgent: Bool {
         ad.isUrgent
+    }
+    
+    func loadImage(completion: @escaping (UIImage?) -> Void) {
+        imageLoader.loadImage(ad.imagesURL.thumb) { image in
+            completion(image)
+        }
     }
 }

@@ -9,6 +9,7 @@ import Combine
 import Foundation
 import SwiftUI
 
+///Given an `Endpoint` and responseType, `NetworkRequestable` will do the request and try to decode to given responseType
 protocol NetworkRequestable {
     func request<T: Decodable>(_ endpoint: Endpoint, responseType: T.Type) -> AnyPublisher<T, Error>
 }
@@ -24,7 +25,6 @@ final class NetworkClient: NetworkRequestable {
         self.configuration = configuration
     }
     
-    ///Given an `Endpoint` and responseType, `NetworkClient` will do the request and try to decode to given responseType
     func request<T: Decodable>(_ endpoint: Endpoint, responseType: T.Type) -> AnyPublisher<T, Error> {
         
         guard var urlComponents = URLComponents(url: configuration.baseURL, resolvingAgainstBaseURL: true) else {

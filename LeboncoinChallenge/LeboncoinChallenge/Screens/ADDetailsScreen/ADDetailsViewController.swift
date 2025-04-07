@@ -134,7 +134,7 @@ class ADDetailsViewController: UIViewController {
 
         urgentView.isHidden = !ad.isUrgent
 
-        ImageLoader.shared.loadImage(ad.image) { [weak self] image in
+        ad.loadImage { [weak self] image in
             if let image = image {
                 self?.adImageView.image = image
             } else {
