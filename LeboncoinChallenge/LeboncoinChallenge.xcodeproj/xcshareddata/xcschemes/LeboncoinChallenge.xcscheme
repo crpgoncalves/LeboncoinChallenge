@@ -63,13 +63,6 @@
             ReferencedContainer = "container:LeboncoinChallenge.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "BASE_URL"
-            value = "$(BASE_URL)"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
