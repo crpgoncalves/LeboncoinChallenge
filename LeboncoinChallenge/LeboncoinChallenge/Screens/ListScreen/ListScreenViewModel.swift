@@ -14,6 +14,7 @@ class ListScreenViewModel: ObservableObject {
     @Published var selectedCategories: Set<Int> = []
     @Published var searchText = ""
     @Published var isLoading = false
+    @Published var errorMessage = ""
 
     var filteredAds: [ADModel] {
         let filteredByCategory = ads.filter { ad in
@@ -52,10 +53,13 @@ class ListScreenViewModel: ObservableObject {
         
         Publishers.Zip(categoriesPublisher, adsPublisher)
             .sink(receiveCompletion: { [weak self] completion in
+                
                 if case .failure(let error) = completion {
                     print(error.localizedDescription)
                     self?.isLoading = false
+                    self?.errorMessage = Localized.string("list_screen.request.error")
                 }
+
             }, receiveValue: { [weak self] categoriesResponse, adsResponse in
                 self?.categories = categoriesResponse.sorted {
                     //If user changes language during the execution it wont be sorted

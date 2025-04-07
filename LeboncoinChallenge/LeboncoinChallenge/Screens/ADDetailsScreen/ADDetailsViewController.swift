@@ -47,6 +47,7 @@ class ADDetailsViewController: UIViewController {
 
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
 
@@ -63,7 +64,7 @@ class ADDetailsViewController: UIViewController {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
 
-        adImageView.contentMode = .scaleToFill
+        adImageView.contentMode = .scaleAspectFill
         adImageView.clipsToBounds = true
         adImageView.layer.cornerRadius = 15
         adImageView.layer.shadowColor = UIColor.black.cgColor

@@ -28,9 +28,12 @@ struct ListScreenView: View {
         NavigationView {
             if vm.isLoading {
                 LoadingView()
-            } else {
+            } else if !vm.errorMessage.isEmpty {
+                ErrorView(message: vm.errorMessage) {
+                    vm.fetchData()
+                }
+            } else{
                 ScrollView(showsIndicators: false) {
-                    
                     CategoryFilterButton(showCategoryModal: $showCategoryModal,
                                          selectedCategories: $vm.selectedCategories)
                     LazyVGrid(columns: columns, spacing: 20) {
