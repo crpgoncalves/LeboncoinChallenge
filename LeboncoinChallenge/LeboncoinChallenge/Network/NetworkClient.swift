@@ -24,6 +24,7 @@ final class NetworkClient: NetworkRequestable {
         self.configuration = configuration
     }
     
+    ///Given an `Endpoint` and responseType, `NetworkClient` will do the request and try to decode to given responseType
     func request<T: Decodable>(_ endpoint: Endpoint, responseType: T.Type) -> AnyPublisher<T, Error> {
         
         guard var urlComponents = URLComponents(url: configuration.baseURL, resolvingAgainstBaseURL: true) else {
@@ -33,10 +34,9 @@ final class NetworkClient: NetworkRequestable {
         urlComponents.path = urlComponents.path.appending(endpoint.path)
         
         if let endpointQueryParameters = endpoint.queryParameters {
+            
             var queryItems = [URLQueryItem]()
-            
             queryItems.append(contentsOf: endpointQueryParameters.map { URLQueryItem(name: $0.key, value: $0.value) })
-            
             urlComponents.queryItems = queryItems
         }
 
