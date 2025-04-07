@@ -3,10 +3,16 @@
   "strings" : {
     "%lld" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Désolé, une erreur est survenue lors du chargement de l'image."
+            "value" : "%lld"
           }
         },
         "pt-PT" : {
