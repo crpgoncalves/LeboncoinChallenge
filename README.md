@@ -9,6 +9,7 @@ This project aims to retrieve and show a List of Ads from a given API.
 2. [How to configure LeboncoinChallenge (Optional) ](#how-to-configure-leboncoinchallenge)
 3. [Stack used ](#used-stack)
 4. [Project structure](#project-structure)
+5. [Run tests](#run-tests)
 
 
 
@@ -87,4 +88,10 @@ If you dont do this configuration xCode will use the fallback URL wich is define
 
 /LeboncoinTests
 ```
-  
+
+### Run Tests
+
+To run all unit tests 
+```bash
+   Cmd + U
+```
