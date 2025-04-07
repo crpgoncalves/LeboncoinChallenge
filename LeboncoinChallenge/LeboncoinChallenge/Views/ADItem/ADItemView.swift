@@ -9,54 +9,50 @@ import SwiftUI
 
 struct ADItemView: View {
     let ad: ADItemViewModel
-
+    @State private var image: UIImage?
+    
+    
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            if let urlString = ad.image,
-               let url = URL(string: urlString) {
-                AsyncImage(url: url) { phase in
-                    switch phase {
-                    case .empty, .failure:
-                        Color.gray.opacity(0.3)
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .aspectRatio(1, contentMode: .fill)
-                            .overlay(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [.black.opacity(0.3), .black.opacity(0.9)]),
-                                    startPoint: .center,
-                                    endPoint: .bottom
-                                )
-                            )
-                            .clipped()
-                    @unknown default:
-                        EmptyView()
-                    }
-                }
+            
+            if let image = image {
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(1, contentMode: .fill)
+                    .clipped()
+                    .overlay(
+                        LinearGradient(
+                            gradient: Gradient(colors: [.black.opacity(0.3), .black.opacity(0.9)]),
+                            startPoint: .center,
+                            endPoint: .bottom
+                        )
+                    )
+            } else {
+                Color.gray.opacity(0.3)
             }
-
+            
+            
             VStack(alignment: .leading, spacing: 8) {
                 Spacer()
                 Text(ad.categoryName)
                     .font(.system(size: 12))
                     .fontWeight(.bold)
                     .foregroundColor(.white)
-
+                
                 Text(ad.title)
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .lineLimit(2)
-
+                
                 HStack {
                     Text(ad.price)
                         .font(.title3)
                         .fontWeight(.medium)
                         .foregroundColor(.green)
-
+                    
                     Spacer()
-
+                    
                     if ad.isUrgent {
                         Text("list_screen.urgent")
                             .font(.subheadline)
@@ -67,7 +63,9 @@ struct ADItemView: View {
                             .background(Capsule().fill(Color.red))
                             .transition(.scale)
                     }
+                    
                 }
+                
             }
             .padding()
         }
@@ -80,10 +78,15 @@ struct ADItemView: View {
         )
         .shadow(radius: 10)
         .padding(.horizontal)
+        .onAppear {
+            ad.loadImage { image in
+                self.image = image
+            }
+            
+        }
     }
+    
 }
-
-
 
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
