@@ -26,8 +26,8 @@ class ADItemViewModel: ObservableObject {
         Localized.string(ad.category?.name)
     }
     
-    var image: String {
-        ad.imagesURL.thumb ?? ""
+    var image: String? {
+        ad.imagesURL.thumb
     }
     
     var title: String {

@@ -13,8 +13,9 @@ final class ImageLoader: ImageLoading {
 
     private init() {}
 
-    func loadImage(_ urlString: String, completion: @escaping (UIImage?) -> Void) {
-        guard let url = URL(string: urlString) else {
+    func loadImage(_ urlString: String?, completion: @escaping (UIImage?) -> Void) {
+        guard let string = urlString,
+              let url = URL(string: string) else {
             completion(nil)
             return
         }

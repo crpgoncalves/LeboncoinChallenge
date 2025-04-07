@@ -7,5 +7,5 @@
 import UIKit
 
 protocol ImageLoading {
-    func loadImage(_ urlString: String, completion: @escaping (UIImage?) -> Void)
+    func loadImage(_ urlString: String?, completion: @escaping (UIImage?) -> Void)
 }

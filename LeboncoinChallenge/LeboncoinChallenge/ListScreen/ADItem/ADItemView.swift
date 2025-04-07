@@ -15,7 +15,8 @@ struct ADItemView: View {
         
         VStack(alignment: .leading, spacing: 12) {
             Spacer()
-            if let url = URL(string: ad.image) {
+            if let urlString = ad.image,
+               let url = URL(string: urlString) {
                 AsyncImage(url: url) { phase in
                     switch phase {
                     case .empty:
@@ -26,8 +27,8 @@ struct ADItemView: View {
                             .scaledToFill()
                             .clipped()
                             .shadow(radius: 10)
-
-                    
+                        
+                        
                     case .failure(_):
                         VStack(spacing: 10) {
                             Image(systemName: "exclamationmark.triangle.fill")
@@ -45,7 +46,7 @@ struct ADItemView: View {
                 .cornerRadius(20)
                 .frame(maxWidth: .infinity, alignment: .center)
             }
-
+            
             Text(ad.categoryName)
                 .font(.subheadline)
                 .fontWeight(.semibold)
@@ -100,7 +101,7 @@ struct ItemView_Previews: PreviewProvider {
                                                 description: "This is an amazing product",
                                                 price: 99.99,
                                                 imagesURL: ImagesURL(small: nil,
-                                                                     thumb: "https://example.com/image.jpg"),
+                                                                     thumb: nil),
                                                 creationDate: "2025-04-03",
                                                 isUrgent: true)))
         .previewLayout(.sizeThatFits)
