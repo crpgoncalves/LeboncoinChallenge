@@ -74,7 +74,7 @@ If you dont do this configuration xCode will use the fallback URL wich is define
    - ...
 
 /Screens
-   - /ADDDetailsScreen
+   - /ADDetailsScreen
    - /LauchScreen
    - /ListScreen
 
