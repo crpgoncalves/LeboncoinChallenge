@@ -5,13 +5,13 @@ This project aims to retrieve and show a List of Ads from a given API.
 
 ## Contents
 
-1. [What is LeboncoinChallenge](#what-is-leboncoinchallenge)
+1. [LeboncoinChallenge Screens](#leboncoinchallenge-screens)
 2. [Run LeboncoinChallenge ](#run-leboncoinchallenge)
 3. [Used Stack](#used-stack)
 4. [Project structure](#project-structure)
 5. [Run tests](#run-tests)
 
-# What is LeboncoinChallenge
+# LeboncoinChallenge Screens
 
 ## List of Ads -> Can be filtered by name and/or category
 
@@ -22,7 +22,9 @@ This project aims to retrieve and show a List of Ads from a given API.
 
 <img src="https://github.com/user-attachments/assets/348d0ccb-b835-4567-86f7-2f3feba99167" width="300"/>
 
+## Network error retrieving data
 
+<img src="https://github.com/user-attachments/assets/79d465af-07e8-4ad9-a51b-54fd788ba3a9" width="300"/>
 
 ### It supports **iPad** and **iPhone** in both landscape and portrait orientations.
 
