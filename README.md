@@ -5,8 +5,8 @@ This project aims to retrieve and show a List of Ads from a given API.
 
 ## Contents
 
-1. [Run LeboncoinChallenge ](#run-leboncoinchallenge)
-2. [What is LeboncoinChallenge](#what-is-leboncoinchallenge)
+1. [What is LeboncoinChallenge](#what-is-leboncoinchallenge)
+2. [Run LeboncoinChallenge ](#run-leboncoinchallenge)
 3. [Run LeboncoinChallenge](#run-leboncoinchallenge)
 4. [Used Stack](#used-stack)
 5. [Project structure](#project-structure)
