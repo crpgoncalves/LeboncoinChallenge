@@ -21,25 +21,14 @@ This project aims to retrieve and show a List of Ads from a given API.
 
 Open `LeboncoinChallenge.xcodeproj` and run project
 
-
 ### How to configure LeboncoinChallenge
 
-If you want to change the `BASE_URL`, it's possible either on the `Config.xcconfig` file (to run directly from xCode) or in `Info.plist` to run without xCode.
-
-If you dont do this configuration xCode will use the fallback URL wich is defined on  `Info.plist`.
+If you want to change the `BASE_URL` in `Info.plist`.
 
 ```
 <key>BASE_URL</key>
 <string>https://raw.githubusercontent.com/leboncoin/paperclip/master/</string>
 ```
-
-1. Go to `Product` > `Scheme` > `Edit Scheme`
-2. Go to `Run`
-3. Select `Arguments` Tab
-4. Add the Environment Variable as shown (`BASE_URL` key with value `$(BASE_URL)`)
-
-<img width="934" alt="Screenshot 2025-04-07 at 10 24 30" src="https://github.com/user-attachments/assets/b3751b21-bc60-468a-869a-a09c00301a23" />
-
 
 
 ### Used Stack
