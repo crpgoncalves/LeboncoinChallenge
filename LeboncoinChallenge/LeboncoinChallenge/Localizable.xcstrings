@@ -109,28 +109,6 @@
         }
       }
     },
-    "cached.async.download_failed" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sorry, there was an error trying to load the image."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Désolé, une erreur est survenue lors de la tentative de chargement de l'image."
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Desculpe, ocorreu um erro ao tentar carregar a imagem."
-          }
-        }
-      }
-    },
     "details_screen.urgent" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -25,7 +25,7 @@ struct ListScreenView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             if vm.isLoading {
                 LoadingView()
             } else if !vm.errorMessage.isEmpty {

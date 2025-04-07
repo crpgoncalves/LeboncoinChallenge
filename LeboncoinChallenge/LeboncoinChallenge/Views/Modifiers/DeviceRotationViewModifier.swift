@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DeviceRotationViewModifier: ViewModifier {
+    
     let action: (UIDeviceOrientation) -> Void
     @State private var lastOrientation: UIDeviceOrientation?
 
@@ -25,17 +26,27 @@ struct DeviceRotationViewModifier: ViewModifier {
     }
 
     private func detectInitialOrientation() {
+        /*
+         Use UIDevice if you want the physical orientation of the device.
+
+         Use UIWindowScene.interfaceOrientation if you want the orientation of the user interface
+         */
         guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
 
         let interfaceOrientation = scene.interfaceOrientation
 
         let deviceOrientation: UIDeviceOrientation = {
             switch interfaceOrientation {
-            case .portrait: return .portrait
-            case .portraitUpsideDown: return .portraitUpsideDown
-            case .landscapeLeft: return .landscapeLeft
-            case .landscapeRight: return .landscapeRight
-            default: return .unknown
+            case .portrait:
+                return .portrait
+            case .portraitUpsideDown:
+                return .portraitUpsideDown
+            case .landscapeLeft:
+                return .landscapeLeft
+            case .landscapeRight:
+                return .landscapeRight
+            default:
+                return .unknown
             }
         }()
 
@@ -60,5 +71,3 @@ extension View {
         self.modifier(DeviceRotationViewModifier(action: action))
     }
 }
-
-

@@ -8,90 +8,82 @@
 import SwiftUI
 
 struct ADItemView: View {
-    @Environment(\.colorScheme) var colorScheme
     let ad: ADItemViewModel
-    
+
     var body: some View {
-        let theme = AppTheme.current(for: colorScheme)
-        
-        VStack(alignment: .leading, spacing: 12) {
-            Spacer()
+
+        ZStack(alignment: .bottomLeading) {
             if let urlString = ad.image,
                let url = URL(string: urlString) {
                 AsyncImage(url: url) { phase in
                     switch phase {
-                    case .empty:
-                        theme.secondaryTextColor.opacity(0.3)
+                    case .empty, .failure:
+                        Color.gray.opacity(0.3)
                     case .success(let image):
                         image
                             .resizable()
                             .scaledToFill()
+                            .overlay(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [.black.opacity(0.3), .black.opacity(0.9)]),
+                                    startPoint: .center,
+                                    endPoint: .bottom
+                                )
+                            )
                             .clipped()
-                            .shadow(radius: 10)
-                        
-                        
-                    case .failure(_):
-                        VStack(spacing: 10) {
-                            Image(systemName: "exclamationmark.triangle.fill")
-                                .foregroundColor(.red)
-                                .font(.largeTitle)
-                            Text("cached.async.download_failed")
-                                .font(.subheadline)
-                                .foregroundColor(theme.textColor)
-                        }
                     @unknown default:
                         EmptyView()
                     }
                 }
-                .frame(height: 220)
-                .cornerRadius(20)
-                .frame(maxWidth: .infinity, alignment: .center)
+            } else {
+                Color.gray.opacity(0.2)
             }
-            
-            Text(ad.categoryName)
-                .font(.subheadline)
-                .fontWeight(.semibold)
-                .foregroundColor(theme.secondaryTextColor)
-                .padding(.top, 10)
-            
-            Text(ad.title)
-                .font(.title2)
-                .fontWeight(.bold)
-                .foregroundColor(theme.textColor)
-                .lineLimit(2)
-                .truncationMode(.tail)
-            
-            HStack {
-                Text(ad.price)
-                    .font(.title3)
-                    .fontWeight(.medium)
-                    .foregroundColor(.green)
-                    .padding(.top, 5)
-                Spacer()
-                if ad.isUrgent {
-                    Text("list_screen.urgent")
-                        .font(.subheadline)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 8)
-                        .background(Capsule().fill(Color.red))
-                        .transition(.scale)
+
+            VStack(alignment: .leading, spacing: 8) {
+                Text(ad.categoryName)
+                    .font(.system(size: 12))
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+
+                Text(ad.title)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .lineLimit(2)
+
+                HStack {
+                    Text(ad.price)
+                        .font(.title3)
+                        .fontWeight(.medium)
+                        .foregroundColor(.green)
+
+                    Spacer()
+
+                    if ad.isUrgent {
+                        Text("list_screen.urgent")
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 8)
+                            .background(Capsule().fill(Color.red))
+                            .transition(.scale)
+                    }
                 }
             }
-            Spacer()
+            .padding()
         }
-        .padding()
-        .background(theme.backgroundColor)
+        .background(Color.black.opacity(0.05))
         .cornerRadius(20)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.gray.opacity(0.5), lineWidth: 2)
+                .stroke(Color.gray.opacity(0.4), lineWidth: 1)
         )
-        .shadow(radius: 12)
+        .shadow(radius: 10)
         .padding(.horizontal)
     }
 }
+
 
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
