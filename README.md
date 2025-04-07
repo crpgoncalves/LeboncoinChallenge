@@ -18,6 +18,7 @@ This project aims to retrieve and show a List of Ads from a given API.
    git clone https://github.com/crpgoncalves/LeboncoinChallenge.git
 ```
 
+Open `LeboncoinChallenge.xcodeproj` and run project
 
 
 ### How to configure LeboncoinChallenge
