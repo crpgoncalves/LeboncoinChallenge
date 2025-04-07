@@ -11,7 +11,6 @@ struct ADItemView: View {
     let ad: ADItemViewModel
 
     var body: some View {
-
         ZStack(alignment: .bottomLeading) {
             if let urlString = ad.image,
                let url = URL(string: urlString) {
@@ -22,7 +21,7 @@ struct ADItemView: View {
                     case .success(let image):
                         image
                             .resizable()
-                            .scaledToFill()
+                            .aspectRatio(1, contentMode: .fill)
                             .overlay(
                                 LinearGradient(
                                     gradient: Gradient(colors: [.black.opacity(0.3), .black.opacity(0.9)]),
@@ -35,11 +34,10 @@ struct ADItemView: View {
                         EmptyView()
                     }
                 }
-            } else {
-                Color.gray.opacity(0.2)
             }
 
             VStack(alignment: .leading, spacing: 8) {
+                Spacer()
                 Text(ad.categoryName)
                     .font(.system(size: 12))
                     .fontWeight(.bold)
@@ -73,6 +71,7 @@ struct ADItemView: View {
             }
             .padding()
         }
+        .frame(minHeight: 250)
         .background(Color.black.opacity(0.05))
         .cornerRadius(20)
         .overlay(
@@ -83,6 +82,7 @@ struct ADItemView: View {
         .padding(.horizontal)
     }
 }
+
 
 
 struct ItemView_Previews: PreviewProvider {
