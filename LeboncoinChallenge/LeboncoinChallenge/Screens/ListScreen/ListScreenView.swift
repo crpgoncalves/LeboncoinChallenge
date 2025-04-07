@@ -29,47 +29,30 @@ struct ListScreenView: View {
             if vm.isLoading {
                 LoadingView()
             } else {
-                VStack {
-                    HStack {
-                        TextField("list_screen.search.filter", text: $vm.searchText)
-                        Spacer()
-                        Button {
-                            vm.resetSearch()
-                        } label: {
-                            Image(systemName: "xmark.circle.fill")
-                        }
-                    }
-                    .padding()
-                    .background(.clear)
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(8)
-                    .padding([.leading, .trailing])
-                    
+                ScrollView(showsIndicators: false) {
                     
                     CategoryFilterButton(showCategoryModal: $showCategoryModal,
                                          selectedCategories: $vm.selectedCategories)
-                    
-                    ScrollView(showsIndicators: false) {
-                        LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(vm.filteredAds) { ad in
-                                NavigationLink(
-                                    destination: ADDetailsViewControllerWrapper(
-                                        ad: ADItemViewModel(ad: ad)),
-                                    label: {
-                                        ADItemView(ad: ADItemViewModel(ad: ad))
-                                    })
-                            }
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(vm.filteredAds) { ad in
+                            NavigationLink(
+                                destination: ADDetailsViewControllerWrapper(
+                                    ad: ADItemViewModel(ad: ad)),
+                                label: {
+                                    ADItemView(ad: ADItemViewModel(ad: ad))
+                                })
                         }
                     }
                 }
-
+                .searchable(text: $vm.searchText,
+                            prompt: "list_screen.search.filter")
+                .navigationTitle("list_screen.title")
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
         .fullScreenCover(isPresented: $showCategoryModal) {
             CategoryFilterItem(vm: vm)
         }
-        .navigationTitle("list_screen.title")
-        .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(StackNavigationViewStyle())
         .onRotate {
             orientation = $0
