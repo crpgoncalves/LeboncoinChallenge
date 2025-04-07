@@ -88,9 +88,19 @@ class ListScreenViewModelTests: XCTestCase {
         viewModel.fetchData()
         viewModel.searchText = "hoMmE NoIr"
         
-        XCTAssertEqual(viewModel.filteredAds.count, 1) 
+        XCTAssertEqual(viewModel.filteredAds.count, 1)
         XCTAssertEqual(viewModel.filteredAds.first?.title, "Statue homme noir assis en plâtre polychrome")
     }
-
-
+    
+    func testToggleCategorySelection() {
+        let categoryId = 4
+        
+        viewModel.toggleCategorySelection(categoryId)
+        
+        XCTAssertTrue(viewModel.selectedCategories.contains(categoryId))
+        
+        viewModel.toggleCategorySelection(categoryId)
+        
+        XCTAssertFalse(viewModel.selectedCategories.contains(categoryId))
+    }
 }
