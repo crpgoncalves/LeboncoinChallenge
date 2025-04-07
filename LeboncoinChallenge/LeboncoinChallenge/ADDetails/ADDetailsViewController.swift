@@ -5,7 +5,6 @@
 //  Created by Carlos Gonçalves on 06/04/2025.
 //
 import UIKit
-
 class ADDetailsViewController: UIViewController {
 
     let ad: ADItemViewModel
@@ -29,12 +28,16 @@ class ADDetailsViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
         updateUI()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        applyTheme(UIKitAppTheme.current(for: traitCollection.userInterfaceStyle))
     }
 
     private func setupUI() {
@@ -65,29 +68,24 @@ class ADDetailsViewController: UIViewController {
         adImageView.layer.shadowRadius = 10
         adImageView.layer.masksToBounds = true
         adImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        creationDateLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
 
-        titleLabel.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
+        titleLabel.font = UIFont.systemFont(ofSize: 28, weight: .semibold)
         titleLabel.numberOfLines = 0
-        titleLabel.textColor = .label
         titleLabel.lineBreakMode = .byWordWrapping
 
-        descriptionLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        descriptionLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.textColor = .secondaryLabel
 
-        priceLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        priceLabel.textColor = .systemGreen
-
-        creationDateLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        creationDateLabel.textColor = .tertiaryLabel
+        priceLabel.font = UIFont.systemFont(ofSize: 22, weight: .bold)
 
         urgentView.backgroundColor = .systemRed
         urgentView.layer.cornerRadius = 20
         urgentView.layer.masksToBounds = true
         urgentView.translatesAutoresizingMaskIntoConstraints = false
 
-        urgentLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        urgentLabel.textColor = .white
+        urgentLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         urgentLabel.text = Localized.string("details_screen.urgent")
         urgentLabel.textAlignment = .center
         urgentLabel.numberOfLines = 1
@@ -97,10 +95,10 @@ class ADDetailsViewController: UIViewController {
 
         let stackView = UIStackView(arrangedSubviews: [
             adImageView,
+            creationDateLabel,
             titleLabel,
             descriptionLabel,
             priceLabel,
-            creationDateLabel,
             urgentView
         ])
         stackView.axis = .vertical
@@ -134,24 +132,24 @@ class ADDetailsViewController: UIViewController {
 
         urgentView.isHidden = !ad.isUrgent
 
-        if let url = URL(string: ad.image) {
-            loadImage(from: url)
-        } else {
-            adImageView.removeFromSuperview()
-        }
-    }
-
-    private func loadImage(from url: URL) {
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            DispatchQueue.main.async { [weak self ] in
-                guard let data = data,
-                      let image = UIImage(data: data) else {
-                    self?.adImageView.removeFromSuperview()
-                    return
-                }
+        ImageLoader.shared.loadImage(ad.image) { [weak self] image in
+            if let image = image {
                 self?.adImageView.image = image
+            } else {
+                self?.adImageView.removeFromSuperview()
             }
         }
-        task.resume()
+
+        applyTheme(UIKitAppTheme.current(for: traitCollection.userInterfaceStyle))
+    }
+
+    private func applyTheme(_ theme: UIKitAppTheme) {
+        view.backgroundColor = theme.backgroundColor
+        titleLabel.textColor = theme.textColor
+        descriptionLabel.textColor = theme.secondaryTextColor
+        priceLabel.textColor = .green
+        creationDateLabel.textColor = theme.secondaryTextColor
+        urgentView.backgroundColor = .systemRed
+        urgentLabel.textColor = .white
     }
 }

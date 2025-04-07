@@ -19,7 +19,7 @@ struct ADItemView: View {
                 AsyncImage(url: url) { phase in
                     switch phase {
                     case .empty:
-                        theme.secondaryColor.opacity(0.3)
+                        theme.secondaryTextColor.opacity(0.3)
                     case .success(let image):
                         image
                             .resizable()
@@ -49,7 +49,7 @@ struct ADItemView: View {
             Text(ad.categoryName)
                 .font(.subheadline)
                 .fontWeight(.semibold)
-                .foregroundColor(theme.secondaryColor)
+                .foregroundColor(theme.secondaryTextColor)
                 .padding(.top, 10)
             
             Text(ad.title)

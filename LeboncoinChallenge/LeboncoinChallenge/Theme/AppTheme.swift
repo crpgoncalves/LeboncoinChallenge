@@ -10,7 +10,7 @@ import SwiftUI
 struct AppTheme {
     
     let primaryColor: Color
-    let secondaryColor: Color
+    let secondaryTextColor: Color
     let backgroundColor: Color
     let textColor: Color
 
@@ -19,14 +19,14 @@ struct AppTheme {
         case .dark:
             return AppTheme(
                 primaryColor: Color.blue,
-                secondaryColor: Color.gray,
+                secondaryTextColor: Color.gray,
                 backgroundColor: Color.black,
                 textColor: Color.white
             )
         default:
             return AppTheme(
                 primaryColor: Color.blue,
-                secondaryColor: Color.gray,
+                secondaryTextColor: Color.gray,
                 backgroundColor: Color.white,
                 textColor: Color.black
             )

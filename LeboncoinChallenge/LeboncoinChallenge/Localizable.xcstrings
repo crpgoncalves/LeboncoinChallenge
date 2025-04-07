@@ -17,6 +17,29 @@
         }
       }
     },
+    "ad_details_screen.created.at:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Created at: "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créé à: "
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Criado em: "
+          }
+        }
+      }
+    },
     "Animaux" : {
       "extractionState" : "manual",
       "localizations" : {

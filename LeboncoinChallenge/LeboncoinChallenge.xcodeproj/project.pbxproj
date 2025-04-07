@@ -22,6 +22,32 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E335A3832DA3B05C00827E46 /* Exceptions for "LeboncoinTests" folder in "LeboncoinChallenge" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Mocks/Network/GetAdsServiceMock.swift,
+				Mocks/Network/GetCategoriesServiceMock.swift,
+				Mocks/Network/MockEndpoint.swift,
+				Mocks/Network/MockImageLoader.swift,
+				Mocks/Network/MockNetworkClient.swift,
+				Mocks/Network/MockResponse/GetAdsMockResponse.swift,
+				Mocks/Network/MockResponse/GetCategoriesMockResponse.swift,
+			);
+			target = E3C6A1762D9DAA3F0092D77C /* LeboncoinChallenge */;
+		};
+		E335A3842DA3B05C00827E46 /* Exceptions for "LeboncoinTests" folder in "LeboncoinTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Mocks/Network/GetAdsServiceMock.swift,
+				Mocks/Network/GetCategoriesServiceMock.swift,
+				Mocks/Network/MockEndpoint.swift,
+				Mocks/Network/MockImageLoader.swift,
+				Mocks/Network/MockNetworkClient.swift,
+				Mocks/Network/MockResponse/GetAdsMockResponse.swift,
+				Mocks/Network/MockResponse/GetCategoriesMockResponse.swift,
+			);
+			target = E3F175B22DA2DD4600C14D49 /* LeboncoinTests */;
+		};
 		E3F175842DA2B34700C14D49 /* Exceptions for "LeboncoinChallenge" folder in "LeboncoinChallenge" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -42,6 +68,10 @@
 		};
 		E3F175B42DA2DD4600C14D49 /* LeboncoinTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E335A3832DA3B05C00827E46 /* Exceptions for "LeboncoinTests" folder in "LeboncoinChallenge" target */,
+				E335A3842DA3B05C00827E46 /* Exceptions for "LeboncoinTests" folder in "LeboncoinTests" target */,
+			);
 			path = LeboncoinTests;
 			sourceTree = "<group>";
 		};

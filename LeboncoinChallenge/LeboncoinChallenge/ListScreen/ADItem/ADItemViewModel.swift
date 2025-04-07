@@ -20,7 +20,7 @@ class ADItemViewModel: ObservableObject {
     }
     
     var date: String {
-        DateHelper.formatDate(from: ad.creationDate)
+        Localized.string("ad_details_screen.created.at:") + DateHelper.formatDate(from: ad.creationDate)
     }
     var categoryName: String {
         Localized.string(ad.category?.name)

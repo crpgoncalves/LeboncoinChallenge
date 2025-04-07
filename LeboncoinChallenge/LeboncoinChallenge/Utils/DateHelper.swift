@@ -21,10 +21,6 @@ enum DateHelper {
         return formatter
     }()
     
-    private static func formatDate(_ date: Date) -> String {
-        return outputDateFormatter.string(from: date)
-    }
-    
     static func formatDate(from dateString: String) -> String {
         if let date = inputDateFormatter.date(from: dateString) {
             return outputDateFormatter.string(from: date)
