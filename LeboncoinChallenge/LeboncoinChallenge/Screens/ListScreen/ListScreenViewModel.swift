@@ -53,12 +53,12 @@ class ListScreenViewModel: ObservableObject {
         
         Publishers.Zip(categoriesPublisher, adsPublisher)
             .sink(receiveCompletion: { [weak self] completion in
-                
                 if case .failure(let error) = completion {
                     print(error.localizedDescription)
-                    self?.isLoading = false
                     self?.errorMessage = Localized.string("list_screen.request.error")
+                    self?.isLoading = false
                 }
+
 
             }, receiveValue: { [weak self] categoriesResponse, adsResponse in
                 self?.categories = categoriesResponse.sorted {
@@ -68,6 +68,7 @@ class ListScreenViewModel: ObservableObject {
                 self?.ads = adsResponse
                 self?.associateCategoriesToAds()
                 self?.isLoading = false
+                self?.errorMessage = ""
             })
             .store(in: &cancellables)
     }
