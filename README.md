@@ -6,14 +6,28 @@ This project aims to retrieve and show a List of Ads from a given API.
 ## Contents
 
 1. [Run LeboncoinChallenge ](#run-leboncoinchallenge)
-2. [How to configure LeboncoinChallenge (Optional) ](#how-to-configure-leboncoinchallenge)
-3. [Stack used ](#used-stack)
-4. [Project structure](#project-structure)
-5. [Run tests](#run-tests)
+2. [What is LeboncoinChallenge](#what-is-leboncoinchallenge)
+3. [Run LeboncoinChallenge](#run-leboncoinchallenge)
+4. [Used Stack](#used-stack)
+5. [Project structure](#project-structure)
+6. [Run tests](#run-tests)
+
+# What is LeboncoinChallenge
+
+## List of Ads -> Can be filtered by name and/or category
+
+<img src="https://github.com/user-attachments/assets/b689bace-1871-4c99-9795-55fde6533a46" width="300"/>
+
+  
+## Ad Detail -> Show details of an Ad
+
+<img src="https://github.com/user-attachments/assets/348d0ccb-b835-4567-86f7-2f3feba99167" width="300"/>
 
 
 
-### Run LeboncoinChallenge
+### It supports **iPad** and **iPhone** in both landscape and portrait orientations.
+
+## Run LeboncoinChallenge
 
 ```bash
    git clone https://github.com/crpgoncalves/LeboncoinChallenge.git
@@ -31,7 +45,7 @@ If you want to change the `BASE_URL` in `Info.plist`.
 ```
 
 
-### Used Stack
+## Used Stack
 
 - **Swift 5.x**
 - **SwiftUI**
@@ -39,7 +53,7 @@ If you want to change the `BASE_URL` in `Info.plist`.
 - **iOS 16+**
 
 
-### Project Structure
+## Project Structure
 
 - **Config** - Contains configurations files.
 - **Network** - Contains all logic, models and services to retreive data from API.  
@@ -79,7 +93,7 @@ If you want to change the `BASE_URL` in `Info.plist`.
 /LeboncoinTests
 ```
 
-### Run Tests
+## Run Tests
 
 To run all unit tests 
 ```bash
