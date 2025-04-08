@@ -67,7 +67,6 @@ If you want to change the `BASE_URL` in `Info.plist`.
 
 ```plaintext
 /Config
-   - Config.xcconfig
    - Info.plist
 
 /Network
