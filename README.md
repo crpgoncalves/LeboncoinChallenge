@@ -48,7 +48,7 @@ If you want to change the `BASE_URL` in `Info.plist`.
 
 ## Used Stack
 
-- **Swift 5.x**
+- **Swift 5**
 - **SwiftUI**
 - **Combine**
 - **iOS 16+**
