@@ -29,7 +29,7 @@ final class ADImageHeaderView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: 300).isActive = true
 
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -96,7 +96,11 @@ final class ADImageHeaderView: UIView {
         urgentView.isHidden = !viewModel.isUrgent
         urgentLabel.text = Localized.string("details_screen.urgent")
         viewModel.loadImage { [weak self] image in
-            self?.imageView.image = image
+            if let image = image {
+                self?.imageView.image = image
+            } else {
+                self?.imageView.backgroundColor = .lightGray
+            }
         }
     }
 }

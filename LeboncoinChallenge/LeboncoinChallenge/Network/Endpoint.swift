@@ -14,4 +14,3 @@ protocol Endpoint {
     var path: String { get }
     var queryParameters: [String: String]? { get }
 }
-

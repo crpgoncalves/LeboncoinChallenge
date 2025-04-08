@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ADItemView: View {
-    let ad: ADItemViewModel
+    private let ad: ADItemViewModel
     @State private var image: UIImage?
     
+    init(ad: ADItemViewModel) {
+        self.ad = ad
+    }
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
